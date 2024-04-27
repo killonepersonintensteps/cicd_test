@@ -1,11 +1,11 @@
 pipeline {
     agent any
-    environment {
-        NAME = 'small-tools-web'
-        PROFILE = 'dev'
-        APP = 'registry.cn-hangzhou.aliyuncs.com/zhengqing/small-tools-web:dev'
-        APP_PORT = 80
-    }
+    // environment {
+    //     NAME = 'small-tools-web'
+    //     PROFILE = 'dev'
+    //     APP = 'registry.cn-hangzhou.aliyuncs.com/zhengqing/small-tools-web:dev'
+    //     APP_PORT = 80
+    // }
 
     stages {
         stage('拉取代码') {
@@ -18,7 +18,7 @@ pipeline {
         stage('构建静态文件') {
             steps {
                 echo '****************************** vue start... ******************************'
-                sh 'source /etc/profile'
+                sh 'printenv'
                 sh 'npm install'
                 sh 'npm run build'
             }
