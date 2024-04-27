@@ -18,22 +18,20 @@ pipeline {
         stage('构建静态文件') {
             steps {
                 echo '****************************** vue start... ******************************'
-                sh 'printenv'
+                sh 'node --version'
+                sh 'npm --version'
+                sh 'npm config get registry'
                 sh 'npm install'
                 sh 'npm run build'
             }
         }
 
-        // stage('构建Docker镜像') {
-        //     steps {
-        //         echo '****************************** delete container and image... ******************************'
-        //         sh 'docker ps -a|grep $NAME|awk \'{print $1}\'|xargs -i docker stop {}|xargs -i docker rm {}'
-        //         sh 'docker images|grep $NAME|grep dev|awk \'{print $3}\'|xargs -i docker rmi {}'
-
-        //         echo '****************************** build image... ******************************'
-        //         sh 'docker build --build-arg PROFILE=dev -t $APP .'
-        //     }
-        // }
+        stage('部署阶段') {
+            steps {
+                echo '****************************** delete container and image... ******************************'
+                sh 'cp -R ./dist ~/Desktop/dist'
+            }
+        }
 
         // stage('运行容器') {
         //     steps {
