@@ -18,7 +18,6 @@ pipeline {
         stage('构建静态文件') {
             steps {
                 echo '****************************** vue start... ******************************'
-                sh 'pwd'
                 sh 'npm install'
                 sh 'npm run build'
             }
