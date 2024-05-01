@@ -30,7 +30,8 @@ pipeline {
             steps {
                 echo '****************************** delete container and image... ******************************'
                 // sh 'cp -R ./dist ~/Desktop/dist'
-                sh 'cp -R ./dist /usr/share/nginx'
+                // sh 'cp -R ./dist /usr/share/nginx'
+                sh 'cp -r ./dist/* /usr/share/nginx/html/'
             }
         }
 
