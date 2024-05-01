@@ -29,7 +29,8 @@ pipeline {
         stage('部署阶段') {
             steps {
                 echo '****************************** delete container and image... ******************************'
-                sh 'cp -R ./dist ~/Desktop/dist'
+                // sh 'cp -R ./dist ~/Desktop/dist'
+                sh 'cp -R ./dist /usr/share/nginx'
             }
         }
 
